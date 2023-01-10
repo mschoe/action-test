@@ -14,4 +14,4 @@ jobs:
       - uses: actions/add-to-project@fea7d52087e249d0623836766958d9193b0f2385
         with:
           project-url: ${{ secrets.QA_TEAM_PROJECT_URL }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
