@@ -21,4 +21,3 @@ jobs:
           project-url: ${{ secrets.QA_TEAM_PROJECT_URL }}
           github-token: ${{ secrets.ADD_TO_PROJECT_PAT }}
           labeled: connectors
-Footer
