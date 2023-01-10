@@ -1,17 +1,21 @@
-name: ADD_TO_PROJECT
-
+name: Add issue to project
 on:
   issues:
     types:
       - opened
       - transferred
-
 jobs:
-  Exec:
-    name: Add issue to project
+  add_to_project:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/add-to-project@fea7d52087e249d0623836766958d9193b0f2385
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@36464acb844fc53b9b8b2401da68844f6b05ebb0
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+      - name: Add to project board
+        uses: actions/add-to-project@75ae529d219964f1ad5c0e8351e4e7c38ed501be
         with:
           project-url: ${{ secrets.QA_TEAM_PROJECT_URL }}
-          github-token: ${{ github.token }}
+          github-token: ${{ steps.generate_token.outputs.token }}
