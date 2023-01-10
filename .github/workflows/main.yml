@@ -5,11 +5,6 @@ on:
     types:
       - opened
       - transferred
-      - labeled
-  pull_request:
-    types:
-      - opened
-      - labeled
 
 jobs:
   Exec:
@@ -20,4 +15,3 @@ jobs:
         with:
           project-url: ${{ secrets.QA_TEAM_PROJECT_URL }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          labeled: connectors
